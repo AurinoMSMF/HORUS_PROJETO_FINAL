@@ -2,7 +2,7 @@
 
     abstract class Connection{
         
-        private static $conn;
+        protected static $conn;
 
         public static function getConnection(){
 
@@ -19,5 +19,11 @@
             }
 
             return self::$conn;
+        }
+
+        public static function closeConnection(){
+            if(!empty(self::$conn)){
+                self::$conn=null;
+            }
         }
     }
