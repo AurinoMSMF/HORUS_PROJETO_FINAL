@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="index.php?class=Preferences&method=save" method="post" enctype="multipart/form-data">
+        <p>ID:</p>
+        <input type="text" readonly=1 name="id" value="{id}">
+        <p>landing_title:</p>
+        <input placeholder="Nome" type="text" name="landing_title" value='{landing_title}'>
+        <br>
+        <p>favicon:</p>
+        <input  type="file" accept="image/*" name="favicon" value="{favicon}">
+        <br>
+        <p>header_logo:</p>
+        <input  type="file" accept="image/*" name="header_logo" value="{header_logo}">
+        <p>link_facebook:</p>
+        <input  type="text" name="link_facebook" value="{link_facebook}">
+        <p>link_instagram:</p>
+        <input  type="text" name="link_instagram" value="{link_instagram}">
+        <p>section_home_title:</p>
+        <input  type="text" name="section_home_title" value="{section_home_title}">
+        <p>section_home_subtitle:</p>
+        <input  type="text" name="section_home_subtitle" value="{section_home_subtitle}">
+        <p>section_home_img:</p>
+        <input  type="file" accept="image/*" name="section_home_img" value="{section_home_img}">
+        <p>section_home_carac_title:</p>
+        <input  type="text" name="section_home_carac_title" value="{section_home_carac_title}">
+        <p>section_report_title:</p>
+        <input  type="text" name="section_report_title" value="{section_report_title}">
+        <p>section_appstore_title:</p>
+        <input  type="text" name="section_appstore_title" value="{section_appstore_title}">
+        <p>section_appstore_subtitle:</p>
+        <input  type="text" name="section_appstore_subtitle" value="{section_appstore_subtitle}">
+        <p>section_appstore_img:</p>
+        <input  type="file" accept="image/*" name="section_appstore_img" value="{section_appstore_img}">
+        <p>section_appstore_img_app:</p>
+        <input  type="file" accept="image/*" name="section_appstore_img_app" value="{section_appstore_img_app}">
+        <p>section_appstore_img_play:</p>
+        <input  type="file" accept="image/*" name="section_appstore_img_play" value="{section_appstore_img_play}">
+        <p>phone_field:</p>
+        <input  type="text" name="phone_field" value="{phone_field}">
+        <p>footer_logo:</p>
+        <input  type="file" accept="image/*" name="footer_logo" value="{footer_logo}">
+        <p>footer_copyright_field:</p>
+        <input  type="text" name="footer_copyright_field" value="{footer_copyright_field}">
+        <p>footer_url_field:</p>
+        <input  type="text" name="footer_url_field" value="{footer_url_field}">
+        <p>footer_powered_field:</p>
+        <input  type="text" name="footer_powered_field" value="{footer_powered_field}">
+        <br>
+        <br>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
