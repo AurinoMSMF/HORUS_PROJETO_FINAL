@@ -1,24 +1,20 @@
 <?php
 
 
-    class Login{
+    class Dashboard{
         
         public $html;
 
 
         public function __construct() {
             $bootstrapCSS = file_get_contents('./layout/css/bootstrap.min.css');
-            $mdiCSS = file_get_contents('./layout/css/materialdesignicons.min.css');
-            $tinySliderCSS = file_get_contents('./layout/css/tiny-slider.css');
-            $swiperCSS = file_get_contents('./layout/css/swiper.min.css');
-            $customCSS = file_get_contents('./layout/css/style.min.css');
-            $colorsCSS = file_get_contents('./layout/css/colors/default.css');
+            $css= file_get_contents('./layout/css/StyleSideBar.css');
     
             // Carrega o conteúdo do arquivo HTML
-            $html = file_get_contents('./html/Login.html');
+            $html = file_get_contents('./html/SideBar.html');
     
             // Concatena o conteúdo dos arquivos CSS e HTML
-            $styles = "<style>{$bootstrapCSS}{$mdiCSS}{$tinySliderCSS}{$swiperCSS}{$customCSS}{$colorsCSS}</style>";
+            $styles = "<style>{$bootstrapCSS}{$css}</style>";
             $this->html = "{$styles}{$html}";
         }
 
