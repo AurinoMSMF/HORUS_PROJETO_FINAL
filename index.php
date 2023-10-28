@@ -1,15 +1,16 @@
 <?php
 
-        spl_autoload_register(function($class){
-            if(file_exists($class.'.php')){
-                require_once($class.'.php');
+        spl_autoload_register(function ($class) {
+            $classPath = '/control/' . $class . '.php';
+            if (file_exists(__DIR__ . $classPath)) {
+                require_once __DIR__ . $classPath;
             }
-
         });
 
-        $classe = $_REQUEST['class'];
 
-        $method = isset($_REQUEST['method']) ? $_REQUEST['method'] : null;
+
+        $method = isset($_REQUEST['method']) ? $_REQUEST['method'] : '';
+        $classe = isset($_REQUEST['class']) ? $_REQUEST['class'] : 'Login';
 
         if(class_exists($classe)){
             $pagina = new $classe($_REQUEST);
@@ -18,9 +19,8 @@
             }
             $pagina->show();
         }
-
-        if(empty($classe) AND empty($method)){
-            header('Location: index.html');
+        else{
+            header('Location: ./model/class=Preference.php&method=saudacao');
         }
 
 ?>

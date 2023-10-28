@@ -4,11 +4,15 @@
         
         protected static $conn;
 
+        public static function saudacao(){
+            echo "Ola";
+        }
+
         public static function getConnection(){
 
             if (empty(self::$conn)){
 
-                $banco = parse_ini_file('config/config.ini');
+                $banco = parse_ini_file('../config/config.ini');
                 $host = $banco['host'];
                 $name = $banco['name'];
                 $user = $banco['user'];
@@ -27,3 +31,4 @@
             }
         }
     }
+?>
