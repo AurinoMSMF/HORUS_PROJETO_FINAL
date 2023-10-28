@@ -1,13 +1,10 @@
 <?php
 
-        spl_autoload_register(function ($class) {
-            $classPath = '/control/' . $class . '.php';
-            if (file_exists(__DIR__ . $classPath)) {
-                require_once __DIR__ . $classPath;
+        spl_autoload_register(function($class){
+            if(file_exists('./control/' . $class . '.php')){
+                require_once('./control/' . $class . '.php');
             }
         });
-
-
 
         $method = isset($_REQUEST['method']) ? $_REQUEST['method'] : '';
         $classe = isset($_REQUEST['class']) ? $_REQUEST['class'] : 'Login';
