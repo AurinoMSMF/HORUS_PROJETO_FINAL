@@ -1,6 +1,6 @@
 <?php
 
-require_once './Control/Connection.php';
+require_once './control/Connection.php';
 
 class Usuarios {
 
@@ -75,7 +75,7 @@ class Usuarios {
                 // Verifica se encontrou algum usuário com as credenciais fornecidas
                 if ($stmt->rowCount() > 0) {
                     // Usuário válido
-                    header("Location: index.php?class=Dashboard");
+                    header("Location: index.php?class=Dashboard&method=show");
                 } else {
                     // Usuário inválido, define a mensagem de erro
                     $erroMessage = "Usuário ou senha incorretos. Tente novamente.";

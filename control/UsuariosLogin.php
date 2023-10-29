@@ -1,6 +1,6 @@
 <?php
 
-require_once './Control/Connection.php';
+require_once './control/Connection.php';
 require_once './control/Usuarios.php';
 
 class UsuariosLogin {
