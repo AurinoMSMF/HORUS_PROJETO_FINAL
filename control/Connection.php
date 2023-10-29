@@ -10,11 +10,13 @@
 
                 $banco = parse_ini_file('./config/config.ini');
                 $host = $banco['host'];
-                $name = $banco['name'];
-                $user = $banco['user'];
-                $pass = $banco['pass'];
+                $name = $banco['banco'];
+                $user = $banco['usuario'];
+                $pass = $banco['senha'];
 
-                self::$conn = new PDO("mysql:dbname={$name};user={$user};password={$pass};host={$host}");
+                // self::$conn = new PDO("mysql:dbname={$name};user={$user};password={$pass};host={$host}");
+                self::$conn = new PDO("mysql:host={$host};dbname={$name}", $user, $pass);
+
                 self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             return self::$conn;
