@@ -11,6 +11,9 @@ class CadastroListagemUsuario {
     public $Cadastro;
     private $items;
     private $data;
+    private $teste;
+
+
 
 
     public function __construct() {
@@ -60,7 +63,6 @@ class CadastroListagemUsuario {
                 
                 $this->data = Usuarios::CadastroUsuario($param);
 
-                header("Location: index.php?class=Dashboard&method=CreateUser");
 
                 
                 }
@@ -72,8 +74,7 @@ class CadastroListagemUsuario {
                 try {
                 $cod_user = (int) $param['cod_user'];
                 usuarios::delete($cod_user);
-                header("Location: index.php?class=Dashboard&method=CreateUser");
-
+                //ir para algum canto
                 }
                 catch (Exception $e) {
                 print $e->getMessage();
@@ -90,14 +91,24 @@ class CadastroListagemUsuario {
                     print $e->getMessage();
                         }
             }
+            public function PuxarDashboard() {
+                $cadastroListagemUsuario = new Dashboard();
+                $this->teste = $cadastroListagemUsuario->show();
+            }
 
     public function show() {
-        $this->load();
-        $this->loadFormCadastro();
-        print $this->Cadastro;
-        print $this->List;
+    $this->load();
+    $this->loadFormCadastro();
+    $this->PuxarDashboard();
 
-    }
+    $conteudo = '<div style="display: flex; flex-direction: column; justify-content: center;
+    padding-left: 130px;">';
+    $conteudo .= $this->teste;   
+    $conteudo .= $this->Cadastro;
+    $conteudo .= $this->List;
+    $conteudo .= '</div>';
 
 
+    print $conteudo;
+}
 }

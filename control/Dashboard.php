@@ -1,10 +1,10 @@
 <?php
 
+require_once './control/CadastroListagemUsuario.php';
 
     class Dashboard{
         
         public $html;
-        public $conteudo;
 
 
         public function __construct() {
@@ -18,9 +18,10 @@
             $styles = "<style>{$bootstrapCSS}{$css}</style>";
             $this->html = "{$styles}{$html}";
         }
-
-        public  function show(){
+        
+        
+        public function show() {
+            // Substitua {Conteudos} pelo conteúdo definido na propriedade $conteudo
             print $this->html;
-
         }
     }
