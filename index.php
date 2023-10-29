@@ -7,9 +7,8 @@
 
         });
 
-        $method = isset($_REQUEST['method']) ? $_REQUEST['method'] : 'show';
-        $classe = isset($_REQUEST['class']) ? $_REQUEST['class'] : 'LandingLoad';
-
+        $method = isset($_REQUEST['method']) ? $_REQUEST['method'] : '';
+        $classe = isset($_REQUEST['class']) ? $_REQUEST['class'] : '';
         if(class_exists($classe)){
             $pagina = new $classe($_REQUEST);
             //echo $method ."<br>";
