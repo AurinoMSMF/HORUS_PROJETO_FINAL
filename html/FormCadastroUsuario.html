@@ -24,6 +24,7 @@
     
 		
 </head> 
+<div class="align-self-center pb-5"><H1>Cadastro de usuario</H1></div>
 <div class="d-flex flex-column justify-content-center">
 <form enctype="multipart/form-data" method="post" action="index.php?class=CadastroListagemUsuario&method=save" class="d-flex flex-column justify-content-center w-100">
     <div class="d-flex flex-wrap">
@@ -33,11 +34,11 @@
     </div>
     <div class="form-group w-50">
       <label for="exampleInputPassword1">Nome de Usuario</label>
-      <input type="text" class="form-control" id="exampleInputPassword1"name="login" value="{login}" placeholder="{login}">
+      <input minlength="5" maxlength="20"  type="text" class="form-control" id="exampleInputPassword1"name="login" value="{login}" placeholder="{login}">
     </div>
     <div class="form-group w-50">
         <label for="exampleInputPassword1">Senha</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" name="password" value="{password}" placeholder="{password}">
+        <input minlength="5" maxlength="20" type="password" class="form-control" id="exampleInputPassword1" name="password" value="{password}" placeholder="{password}">
     </div>
 </div>
   <div class="d-flex align-self-center mt-3">
