@@ -2,7 +2,7 @@
 
 require_once './control/Connection.php';
 
-class Usuarios {
+class Usuarios{
 
     private $erroMessage; // Agora é uma propriedade privada da classe
     public $html;
