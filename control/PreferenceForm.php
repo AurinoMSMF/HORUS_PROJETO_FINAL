@@ -36,8 +36,8 @@ class PreferenceForm{
         
         try{
             $id = (int) $param['id'];
-            $pessoa = Preference::find(1);
-            $this->data = $pessoa;
+            $preference = Preference::find(1);
+            $this->data = $preference;
         }
         catch(Exception $e){
             print $e->getMessage();
