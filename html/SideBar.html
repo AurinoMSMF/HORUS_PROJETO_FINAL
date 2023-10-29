@@ -7,15 +7,16 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>Sidebars · Bootstrap v5.3</title>
+    <title>Sidebar</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
 
-    
+      <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+      
 
-<link href="../layout/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  <link href="../layout/css/bootstrap.min.css" rel="stylesheet">
 <!--Icones do bootstrap para a side bar-->
     
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -42,6 +43,8 @@
   </symbol>
 </svg>
 <!--Icones do bootstrap para a side bar-->
+<body class="d-flex flex-column align-items-left">
+  
 
 <main class="d-flex flex-nowrap">
 
@@ -50,12 +53,11 @@
       <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-4">DashBoard</span>
     </a>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
+    <ul class="nav nav-pills flex-column mb-auto pt-5">
       <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
+        <a href="index.php?class=Dashboard&method=CreateUser" class="nav-link active" aria-current="page"  id="home-link">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-          Layout Home
+          Cadastro De Usuarios
         </a>
       </li>
       <li>
@@ -95,11 +97,11 @@
   </div>
 
   <div class="container">
-    <H1>Conteudos Gerais Ao Lado</H1>
+    {Conteudos}
   </div>
 
   <div class="b-example-vr"></div>
 </main>
-
+</body>
     <script src="../js/SideBar.js"></script></body>
 </html>

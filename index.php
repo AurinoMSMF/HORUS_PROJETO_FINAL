@@ -9,8 +9,8 @@
 
         //$classe = $_REQUEST['class'];
 
-        $method = isset($_REQUEST['method']) ? $_REQUEST['method'] : '';
-        $classe = isset($_REQUEST['class']) ? $_REQUEST['class'] : 'Login';
+        $method = isset($_REQUEST['method']) ? $_REQUEST['method'] : '';    
+        $classe = isset($_REQUEST['class']) ? $_REQUEST['class'] : 'LandingLoad';
 
         if(class_exists($classe)){
             $pagina = new $classe($_REQUEST);

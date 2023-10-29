@@ -4,6 +4,7 @@
     class Dashboard{
         
         public $html;
+        public $conteudo;
 
 
         public function __construct() {
@@ -17,22 +18,17 @@
             $styles = "<style>{$bootstrapCSS}{$css}</style>";
             $this->html = "{$styles}{$html}";
         }
-
-        public function ValidarLogin($param){
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-                if (isset($_POST['Usuario']) && isset($_POST['Senha'])) {
-                    // Se 'Usuario' e 'Senha' foram enviados via POST
-                    
-                    $usuario = $_POST['Usuario'];
-                    $senha = $_POST['Senha'];
-                    if($usuario == 'admin' && $senha == 'admin'){
-                        header("Location: index.php?class=Dashboard");
-                    }
-
-                }
-            }
-            
+        public function CreateUser() {
+            $cadastroListagemUsuario = new CadastroListagemUsuario();
+            ob_start();
+            $cadastroListagemUsuario->show();
+            $this->conteudo = ob_get_clean();
+            $sidebarContent = file_get_contents('./html/SideBar.html');
+            $sidebarContent = str_replace('{Conteudos}', $this->conteudo, $sidebarContent);
+            $bootstrapCSS = file_get_contents('./layout/css/bootstrap.min.css');
+            $css = file_get_contents('./layout/css/StyleSideBar.css');
+            $styles = "<style>{$bootstrapCSS}{$css}</style>";
+            $this->html = "{$styles}{$sidebarContent}";
         }
 
         public  function show(){
