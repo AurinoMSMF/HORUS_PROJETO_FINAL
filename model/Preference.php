@@ -1,10 +1,8 @@
 <?php
 
-    require_once '../control/Connection.php';
+require_once './control/Connection.php';
 
-    Connection::saudacao();
-
-    abstract class Preferences{
+class Preference{
 
         public function __construct(){
         }
@@ -74,9 +72,14 @@
     
             public static function all(){
                 $conn=Connection::getConnection();
-                $result= $conn->query("SELECT * FROM preferencias ORDER BY id");
-    
-                return $result->fetchAll();
+                $result= $conn->query("SELECT * FROM preferencias LIMIT 1");
+       
+                //print_r($result->fetch(PDO::FETCH_ASSOC));
+                return $result->fetch(PDO::FETCH_ASSOC);
+            }
+
+            public function show(){
+                $this->all();
             }
 
         }

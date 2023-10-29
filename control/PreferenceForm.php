@@ -5,10 +5,10 @@ class PreferenceForm{
 
     public function __construct(){
     
-        $this->html=file_get_contents('../model/formPreferences.html');
+        $this->html=file_get_contents('./model/formPreferences.html');
         $this->data=[
             ':id' => null,
-            'favicon' => null,
+            ':favicon' => null,
             ':landing_title' => null,
             ':header_logo' => null,
             ':link_facebook' => null,
@@ -36,7 +36,7 @@ class PreferenceForm{
         
         try{
             $id = (int) $param['id'];
-            $pessoa = Pessoa::find($id);
+            $pessoa = Preference::find(1);
             $this->data = $pessoa;
         }
         catch(Exception $e){

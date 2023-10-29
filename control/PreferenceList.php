@@ -1,33 +1,40 @@
 <?php
 
-include_once '../model/Preference.php';
+require_once './model/Preference.php';
 
-class PreferenceList{
 
-    private $html;
+    class PreferenceList{
 
-    public function __construct(){
-        $this->show();
-    }
+        //private $html;
 
-    public function load(){
-        try{
-            $preferences=Preference::all();
-            $this->html = file_get_contents('../layout/index.html');
-            foreach($preferences as $preference){
-                $this->html = str_replace('{landing_title}',$preference['landing_title'],$this->html);
-                $this->html = str_replace('{link_facebook}',$preference['link_facebook'],$this->html);
-                $this->html = str_replace('{link_instagram}',$preference['link_instagram'],$this->html);
-            }
-            //$this->html = str_replace('{items}', $items, $this->html);
+        public function __construct(){ 
         }
-        catch(Exception $e){
-            print $e->getMessage();
+
+        public static function load(){
+                try {
+                    $preferences = Preference::all();
+                    //echo $preferences['landing_title'];
+                    $html = file_get_contents('./layout/index.html');
+                    //print $html;
+                    //var_dump($html);
+                    foreach ($preferences as $preference) {
+                        //echo $preference['landing_title'];
+                        $html = str_replace('{landing_title}', $preferences['landing_title'], $html);
+                        $html = str_replace('{link_facebook}', $preferences['link_facebook'], $html);
+                        $html = str_replace('{link_instagram}', $preferences['link_instagram'], $html);
+                        // Adicione mais substituições conforme necessário para outras colunas do banco de dados.
+                    }
+            
+                    print $html;
+                } catch (Exception $e) {
+                    print $e->getMessage();
+                }
+            
+        }
+
+        public static function show(){
+            self::load();
         }
     }
 
-    public function show(){
-        $this->load();
-        print $this->html;
-    }
-}
+?>
