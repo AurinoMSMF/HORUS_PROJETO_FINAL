@@ -4,7 +4,36 @@ require_once './control/Connection.php';
 
 class Preference{
 
-        public function __construct(){
+        public static function saveDois($preferences){
+            $conn = Connection::getConnection();
+            try{        
+                if(isset($_FILES)){
+
+                    foreach ($preferences as $preference){
+                        $extensao = strtolower(substr($preferences[$preference]['name'],-4));
+                        if($extensao ===".png"){
+                            $novo_nome=md5(time()) . $extensao;
+                            $diretorio = "./";
+                            
+                            move_uploaded_file($preference['tmp_name'], $diretorio.$novo_nome);
+                            
+                            $sql_code = "UPDATE preferencias SET $preferences[$preference] = '$novo_nome' WHERE id =1";
+                            $result = $conn->prepare($sql);
+                            $result->execute();
+                        }else{
+                            $sql_code = "UPDATE preferencias SET $preference = '{$preferences[$preference]}'";
+                            $result = $conn->prepare($sql);
+                            $result->execute();
+                        }
+                    }
+                }else{
+                    echo "Problema com FILE";
+                }
+            }
+            catch(Exception $e){
+                $conn->rollBack();
+                print $e->getMessage();
+            }
         }
 
         public static function save($preference){

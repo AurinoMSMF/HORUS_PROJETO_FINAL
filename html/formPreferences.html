@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Preferences</title>
+</head>
+<body style="background-color: darkgrey;">
+    <form action="./index.php?class=PreferenceList&method=saveDois" method="post" enctype="multipart/form-data">
+
+        Icone da aba: <img src="{favicon}" width="40" height="40" alt="Icone da aba">
+        <input type="file" name="favicon"><br><hr>
+        Titulo da landing page: <input type="text" name="landing_title" value={landing_title}><br><hr>
+        Logo do header: <img src="{header_logo}" width="80" height="40" alt="Logo Header"> <input type="file" name="header_logo"><br><hr>
+        Link do Facebook: <input type="text" name="link_facebook" value={link_facebook}><br><hr>
+        Link do Instagram: <input type="text" name="link_instagram" value={link_instagram}><br><hr>
+        Titulo da seção Home: <input type="text" name="section_home_title" value={section_home_title}><br><hr>
+        Subtitulo da seção Home: <input type="text" name="section_home_subtitle" value={section_home_subtitle}><br><hr>
+        Imagem principal da seção Home: <img src="{section_home_img}" width="100" height="150" alt="Logo Header"> <input type="file" name="section_home_img"><br><hr>
+        Titulo das características da seção Home: <input type="text" name="section_home_carac_title" value={section_home_carac_title}><br><hr>
+        Titulo da seção Testemunhos: <input type="text" name="section_report_title" value={section_report_title}><br><hr>
+        Titulo da seção Lojas de APP: <input type="text" name="section_appstore_title" value={section_appstore_title}><br><hr>
+        Subtitulo da seção Lojas de APP: <input type="text" name="section_appstore_subtitle" value={section_appstore_subtitle}><br><hr>
+        Imagem principal da seção Lojas de APP: <img src="{section_appstore_img}" width="100" height="150" alt="Logo Header"> <input type="file" name="section_appstore_img"><br><hr>
+        Imagem App Store da seção Lojas de APP: <img src="{section_appstore_img_app}" width="80" height="40" alt="Logo Header"> <input type="file" name="section_appstore_img_app"><br><hr>
+        Imagem GooglePlay da seção Lojas de APP: <img src="{section_appstore_img_play}" width="80" height="40" alt="Logo Header"> <input type="file" name="section_appstore_img_play"><br><hr>
+        Campo de Telefone: <input type="text" name="phone_field" value={phone_field}><br><hr>
+        Logo do rodapé: <img src="{footer_logo}" width="80" height="40" alt="Logo Header"> <input type="file" name="footer_logo"><br><hr>
+        Campo de direitos autorais: <input type="text" name="footer_copyright_field" value={footer_copyright_field}><br><hr>
+        Campo de URL do rodapé: <input type="text" name="footer_url_field" value={footer_url_field}><br><hr>
+        Campo Powered By do rodapé: <input type="text" name="footer_powered_field" value={footer_powered_field}><br><hr>
+        <input type="submit" value="Enviar preferencias">
+    </form>
+</body>
+</html>
