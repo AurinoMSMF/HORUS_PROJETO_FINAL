@@ -62,6 +62,7 @@ class CadastroListagemUsuario {
                 try {
                 
                 $this->data = Usuarios::CadastroUsuario($param);
+                header("Location: index.php?class=CadastroListagemUsuario&method=show");
 
 
                 
@@ -74,8 +75,8 @@ class CadastroListagemUsuario {
                 try {
                 $cod_user = (int) $param['cod_user'];
                 usuarios::delete($cod_user);
-                //ir para algum canto
-                }
+                header("Location: index.php?class=CadastroListagemUsuario&method=show");
+            }
                 catch (Exception $e) {
                 print $e->getMessage();
                 }
@@ -86,6 +87,7 @@ class CadastroListagemUsuario {
                         $cod_user = (int) $param['cod_user'];
                         $pessoa = Usuarios::find($cod_user);
                         $this->data = $pessoa;
+                        self::show();
                     }
                     catch (Exception $e) {
                     print $e->getMessage();
@@ -101,7 +103,7 @@ class CadastroListagemUsuario {
     $this->loadFormCadastro();
     $this->PuxarDashboard();
 
-    $conteudo = '<div style="display: flex; flex-direction: column; justify-content: center;
+    $conteudo = '<div style="display: flex; flex-direction: column; justify-content: center; 
     padding-left: 130px;">';
     $conteudo .= $this->teste;   
     $conteudo .= $this->Cadastro;

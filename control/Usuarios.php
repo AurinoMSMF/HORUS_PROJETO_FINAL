@@ -1,8 +1,10 @@
 <?php
 
 require_once './control/Connection.php';
+require_once './control/UsuariosLogin.php';
 
-class Usuarios{
+
+class Usuarios {
 
     private $erroMessage; // Agora é uma propriedade privada da classe
     public $html;
@@ -58,33 +60,33 @@ class Usuarios{
     public static function ValidarLogin($param) {
         $conn = Connection::getConnection();
         $erroMessage = '';
-    
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST['Usuario']) && isset($_POST['Senha'])) {
                 // Se 'Usuario' e 'Senha' foram enviados via POST
                 $usuario = $_POST['Usuario'];
                 $senha = $_POST['Senha'];
-    
+        
                 // Consulta SQL para verificar se o usuário e a senha existem na tabela de usuários
                 $query = "SELECT * FROM usuarios WHERE login = :usuario AND password = :senha";
                 $stmt = $conn->prepare($query);
                 $stmt->bindParam(':usuario', $usuario);
                 $stmt->bindParam(':senha', $senha);
                 $stmt->execute();
-    
+        
                 // Verifica se encontrou algum usuário com as credenciais fornecidas
                 if ($stmt->rowCount() > 0) {
                     // Usuário válido
                     header("Location: index.php?class=Dashboard&method=show");
+                    exit();
                 } else {
-                    // Usuário inválido, define a mensagem de erro
-                    $erroMessage = "Usuário ou senha incorretos. Tente novamente.";
+                    return $erroMessage = "Usuário ou senha incorretos. Tente novamente.";
                 }
-        
-                return $erroMessage;
-                }  
-            }   
+            } 
         }
+
+    }
+    
         public static function find($cod_user) {
             $conn = Connection::getConnection();
             $stmt = $conn->prepare("SELECT * FROM usuarios WHERE cod_user=:cod_user");
@@ -106,7 +108,3 @@ class Usuarios{
         }
     
     }
-    
-        
-
-

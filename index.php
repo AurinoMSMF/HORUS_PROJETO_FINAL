@@ -16,7 +16,7 @@
                 //echo "INDEX METODO E CLASSE";
                 $pagina->$method($_REQUEST);
             }
-            $pagina->show();
+           // $pagina->show();
         }else{
             header('Location: index.php?class=LandingLoad&method=show');
         }

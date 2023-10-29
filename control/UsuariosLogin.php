@@ -3,9 +3,9 @@
 require_once './control/Connection.php';
 require_once './control/Usuarios.php';
 
-class UsuariosLogin{
+class UsuariosLogin {
 
-    private $erroMessage; // Agora é uma propriedade privada da classe
+    private $erroMessage = ''; // Inicialize com uma string vazia
     public $html;
 
     public function __construct() {
@@ -15,7 +15,6 @@ class UsuariosLogin{
         $swiperCSS = file_get_contents('./layout/css/swiper.min.css');
         $customCSS = file_get_contents('./layout/css/style.min.css');
         $colorsCSS = file_get_contents('./layout/css/colors/default.css');
-
         // Carrega o conteúdo do arquivo HTML
         $html = file_get_contents('./html/Login.html');
 
@@ -25,18 +24,27 @@ class UsuariosLogin{
     }
     public function Validar($param) {
         try {
-            $this->erroMessage = Usuarios::ValidarLogin($param);
-            }   
-            catch (Exception $e) {
-            }
-            
+            $erroMessage = Usuarios::ValidarLogin($param);
+            $this->show($erroMessage);
+        } catch (Exception $e) {
+            // Trate exceções, se necessário
+        }
     }
 
-    public function show() {
-        // Atualiza a mensagem de erro no HTML antes de exibi-lo
-        $this->html = str_replace('{erroMessage}', $this->erroMessage, $this->html);
-        print $this->html;
+    public function show($erroMessage) {
+    // Verifica se $erroMessage é um array
+    if (is_array($erroMessage)) {
+        // Se $erroMessage for um array, define $erroMessage como uma string vazia
+        $erroMessage = '';
+        $erroMessageString = $erroMessage;
+    }else {
+        // Se $erroMessage não for um array, assume que já é uma string
+        $erroMessageString = $erroMessage;
     }
 
+    // Atualiza a mensagem de erro no HTML antes de exibi-lo
+    $this->html = str_replace('{erroMessage}', $erroMessageString, $this->html);
+    print $this->html;
+    }
 
 }
