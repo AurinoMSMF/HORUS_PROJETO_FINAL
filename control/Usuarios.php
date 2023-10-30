@@ -27,18 +27,23 @@ class Usuarios {
 
     public static function CadastroUsuario($pessoa) {
         $conn = Connection::getConnection();
-    
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Verifica se os campos de usuário e senha estão vazios
+            if (empty($pessoa['login']) || empty($pessoa['password'])) {
+                return "Usuário e senha são obrigatórios.";
+            }
+    
             if (empty($pessoa['cod_user'])) {
                 $result = $conn->query("SELECT max(cod_user) as next FROM usuarios");
                 $row = $result->fetch();
                 $pessoa['cod_user'] = (int) $row['next'] + 1;
-                $sql = "INSERT INTO usuarios(cod_user, login, password) VALUES (:cod_user, :login,  :password)";
+                $sql = "INSERT INTO usuarios(cod_user, login, password) VALUES (:cod_user, :login, MD5(:password))";
             } else {
                 $sql = "UPDATE usuarios SET 
                         cod_user = :cod_user,
                         login = :login,
-                        password = :password
+                        password = MD5(:password)
                         WHERE cod_user = :cod_user";
             }
             $result = $conn->prepare($sql);
@@ -68,7 +73,7 @@ class Usuarios {
                 $senha = $_POST['Senha'];
         
                 // Consulta SQL para verificar se o usuário e a senha existem na tabela de usuários
-                $query = "SELECT * FROM usuarios WHERE login = :usuario AND password = :senha";
+                $query = "SELECT * FROM usuarios WHERE login = :usuario AND password = MD5(:senha)";
                 $stmt = $conn->prepare($query);
                 $stmt->bindParam(':usuario', $usuario);
                 $stmt->bindParam(':senha', $senha);
