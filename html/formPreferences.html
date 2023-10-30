@@ -1,35 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Preferences</title>
-</head>
-<body style="background-color: darkgrey;">
-    <form action="./index.php?class=PreferenceList&method=save" method="post" enctype="multipart/form-data">
+<div style="display: flex; flex-direction: column; justify-content: center; 
+    padding-left: 130px;">
+    <html lang="en">
+    <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Formulario de Preferencias</title>
 
-        Icone da aba: <img src="{favicon}" width="40" height="40" alt="Icone da aba">
-        <input type="file" name="favicon"><br><hr>
-        Titulo da landing page: <input type="text" name="landing_title" value={landing_title}><br><hr>
-        Logo do header: <img src="{header_logo}" width="80" height="40" alt="Logo Header"> <input type="file" name="header_logo"><br><hr>
-        Link do Facebook: <input type="text" name="link_facebook" value={link_facebook}><br><hr>
-        Link do Instagram: <input type="text" name="link_instagram" value={link_instagram}><br><hr>
-        Titulo da seção Home: <input type="text" name="section_home_title" value={section_home_title}><br><hr>
-        Subtitulo da seção Home: <input type="text" name="section_home_subtitle" value={section_home_subtitle}><br><hr>
-        Imagem principal da seção Home: <img src="{section_home_img}" width="100" height="150" alt="Logo Header"> <input type="file" name="section_home_img"><br><hr>
-        Titulo das características da seção Home: <input type="text" name="section_home_carac_title" value={section_home_carac_title}><br><hr>
-        Titulo da seção Testemunhos: <input type="text" name="section_report_title" value={section_report_title}><br><hr>
-        Titulo da seção Lojas de APP: <input type="text" name="section_appstore_title" value={section_appstore_title}><br><hr>
-        Subtitulo da seção Lojas de APP: <input type="text" name="section_appstore_subtitle" value={section_appstore_subtitle}><br><hr>
-        Imagem principal da seção Lojas de APP: <img src="{section_appstore_img}" width="100" height="150" alt="Logo Header"> <input type="file" name="section_appstore_img"><br><hr>
-        Imagem App Store da seção Lojas de APP: <img src="{section_appstore_img_app}" width="80" height="40" alt="Logo Header"> <input type="file" name="section_appstore_img_app"><br><hr>
-        Imagem GooglePlay da seção Lojas de APP: <img src="{section_appstore_img_play}" width="80" height="40" alt="Logo Header"> <input type="file" name="section_appstore_img_play"><br><hr>
-        Campo de Telefone: <input type="text" name="phone_field" value={phone_field}><br><hr>
-        Logo do rodapé: <img src="{footer_logo}" width="80" height="40" alt="Logo Header"> <input type="file" name="footer_logo"><br><hr>
-        Campo de direitos autorais: <input type="text" name="footer_copyright_field" value={footer_copyright_field}><br><hr>
-        Campo de URL do rodapé: <input type="text" name="footer_url_field" value={footer_url_field}><br><hr>
-        Campo Powered By do rodapé: <input type="text" name="footer_powered_field" value={footer_powered_field}><br><hr>
-        <input type="submit" value="Enviar preferencias">
-    </form>
-</body>
+            <!-- Bootstrap css --> <!--{css/bootstrap.min.css}-->
+            <link rel="stylesheet" href="{css/bootstrap.min.css}" type="text/css" id="bootstrap-style">
+        
+            <!-- Material Icon Css --> <!--{css/materialdesignicons.min.css}-->
+            <link rel="stylesheet" href="{css/materialdesignicons.min.css}" type="text/css">
+        
+            <!-- Swiper Css --> <!--{css/tiny-slider.css}-->
+            <link rel="stylesheet" href="{css/tiny-slider.css}" type="text/css">
+            <!--<link rel="stylesheet" href="css/swiper.min.css" type="text/css">-->
+        
+            <!-- Custom Css --> <!--{css/style.min.css}-->
+            <link rel="stylesheet" href="{css/style.min.css}" type="text/css">
+        
+            <!-- colors --> <!--{css/colors/default.css}-->
+            <link href="{css/colors/default.css}" rel="stylesheet" type="text/css" id="color-opt">
+            
+                
+    </head>
+        <div class="d-flex flex-column justify-content-center">
+            <form action="./index.php?class=PreferenceList&method=save" method="post" enctype="multipart/form-data" class="d-flex flex-column justify-content-center w-75 align-self-center" style="margin: 20px;">
+
+                <div class="d-flex flex-wrap">
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Icone da aba:</label><br>
+                        <img src="{favicon}" width="50" height="50" alt="Icone da aba">
+                        <input style="width: 400px;" class="form-control" type="file" name="favicon">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Titulo da landing page:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="landing_title" value="{landing_title}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Logo do header:</label><br> 
+                        <img src="{header_logo}" width="80" height="40" alt="Logo Header"> <input style="width: 400px;" class="form-control" type="file" name="header_logo">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Link do Facebook:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="link_facebook" value="{link_facebook}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Link do Instagram:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="link_instagram" value="{link_instagram}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Titulo da seção Home:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="section_home_title" value='{section_home_title}'>
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Subtitulo da seção Home:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="section_home_subtitle" value="{section_home_subtitle}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Imagem principal da seção Home:</label><br>
+                        <img src="{section_home_img}" width="100" height="150" alt="
+        Imagem principal Home"> <input style="width: 400px;" class="form-control" type="file" name="section_home_img">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Titulo das características da seção Home:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="section_home_carac_title" value="{section_home_carac_title}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Titulo da seção Testemunhos:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="section_report_title" value="{section_report_title}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Titulo da seção Lojas de APP:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="section_appstore_title" value="{section_appstore_title}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Subtitulo da seção Lojas de APP:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="section_appstore_subtitle" value="{section_appstore_subtitle}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Imagem principal da seção Lojas de APP:</label><br>
+                        <img src="{section_appstore_img}" width="100" height="150" alt="Imagem principal da seção Lojas de APP"> <input style="width: 400px;" class="form-control" type="file" name="section_appstore_img">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Imagem App Store da seção Lojas de APP:</label><br>
+                        <img src="{section_appstore_img_app}" width="80" height="40" alt="Imagem App Store"> <input style="width: 400px;" class="form-control" type="file" name="section_appstore_img_app">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Imagem GooglePlay da seção Lojas de APP:</label><br>
+                        <img src="{section_appstore_img_play}" width="80" height="40" alt="Imagem GooglePlay"> <input style="width: 400px;" class="form-control" type="file" name="section_appstore_img_play">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Campo de Telefone:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="phone_field" value="{phone_field}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Logo do rodapé:</label><br>
+                        <img src="{footer_logo}" width="80" height="40" alt="Logo do rodapé"> <input style="width: 400px;" class="form-control" type="file" name="footer_logo">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Campo de direitos autorais:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="footer_copyright_field" value="{footer_copyright_field}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Campo de URL do rodapé:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="footer_url_field" value="{footer_url_field}">
+                    </div>
+                    <div class="form-group w-50">
+                        <label  style="font-size: 20px;" for="exampleInputEmail1">Campo Powered By do rodapé:</label><br>
+                        <input style="width: 375px;" class="form-control" type="text" name="footer_powered_field" value="{footer_powered_field}">
+                    </div>
+                </div>
+                
+                <div class="d-flex align-self-center mt-3">
+                    <button type="submit" class="w-100 btn btn-primary">Enviar</button>
+                </div>
+                </form>
+        </div>
+</div>
 </html>
+<!-- 
+Icone da aba: <img src="{favicon}" width="40" height="40" alt="Icone da aba">
+<input style="width: 400px;" class="form-control" type="file" name="favicon"><br><hr>
+Titulo da landing page: <input style="width: 375px;" class="form-control" type="text" name="landing_title" value="{landing_title}"><br><hr>
+Logo do header: <img src="{header_logo}" width="80" height="40" alt="Logo Header"> <input style="width: 400px;" class="form-control" type="file" name="header_logo"><br><hr>
+Link do Facebook: <input style="width: 375px;" class="form-control" type="text" name="link_facebook" value="{link_facebook}"><br><hr>
+Link do Instagram: <input style="width: 375px;" class="form-control" type="text" name="link_instagram" value="{link_instagram}"><br><hr>
+Titulo da seção Home: <input style="width: 375px;" class="form-control" type="text" name="section_home_title" value='{section_home_title}'><br><hr>
+Subtitulo da seção Home: <input style="width: 375px;" class="form-control" type="text" name="section_home_subtitle" value="{section_home_subtitle}"><br><hr>
+Imagem principal da seção Home: <img src="{section_home_img}" width="100" height="150" alt="
+Imagem princiap Home"> <input style="width: 400px;" class="form-control" type="file" name="section_home_img"><br><hr>
+Titulo das características da seção Home: <input style="width: 375px;" class="form-control" type="text" name="section_home_carac_title" value="{section_home_carac_title}"><br><hr>
+Titulo da seção Testemunhos: <input style="width: 375px;" class="form-control" type="text" name="section_report_title" value="{section_report_title}"><br><hr>
+Titulo da seção Lojas de APP: <input style="width: 375px;" class="form-control" type="text" name="section_appstore_title" value="{section_appstore_title}"><br><hr>
+Subtitulo da seção Lojas de APP: <input style="width: 375px;" class="form-control" type="text" name="section_appstore_subtitle" value="{section_appstore_subtitle}"><br><hr>
+Imagem principal da seção Lojas de APP: <img src="{section_appstore_img}" width="100" height="150" alt="Imagem principal da seção Lojas de APP"> <input style="width: 400px;" class="form-control" type="file" name="section_appstore_img"><br><hr>
+Imagem App Store da seção Lojas de APP: <img src="{section_appstore_img_app}" width="80" height="40" alt="Imagem App Store"> <input style="width: 400px;" class="form-control" type="file" name="section_appstore_img_app"><br><hr>
+Imagem GooglePlay da seção Lojas de APP: <img src="{section_appstore_img_play}" width="80" height="40" alt="Imagem GooglePlay"> <input style="width: 400px;" class="form-control" type="file" name="section_appstore_img_play"><br><hr>
+Campo de Telefone: <input style="width: 375px;" class="form-control" type="text" name="phone_field" value="{phone_field}"><br><hr>
+Logo do rodapé: <img src="{footer_logo}" width="80" height="40" alt="Logo do rodapé"> <input style="width: 400px;" class="form-control" type="file" name="footer_logo"><br><hr>
+Campo de direitos autorais: <input style="width: 375px;" class="form-control" type="text" name="footer_copyright_field" value="{footer_copyright_field}"><br><hr>
+Campo de URL do rodapé: <input style="width: 375px;" class="form-control" type="text" name="footer_url_field" value="{footer_url_field}"><br><hr>
+Campo Powered By do rodapé: <input style="width: 375px;" class="form-control" type="text" name="footer_powered_field" value="{footer_powered_field}"><br><hr> -->
