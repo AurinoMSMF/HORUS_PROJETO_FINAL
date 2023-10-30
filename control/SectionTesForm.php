@@ -50,6 +50,11 @@ require_once './model/SectionTes.php';
     
             }
 
+            public function PuxarDashboard() {
+                $cadastroListagemUsuario = new Dashboard();
+                $this->teste = $cadastroListagemUsuario->show();    
+            }
+
             public function show(){
                 
                 $this->html = str_replace('{cod_test}', $this->data['cod_test'], $this->html);

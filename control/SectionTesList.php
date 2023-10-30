@@ -4,10 +4,20 @@ require_once './model/SectionTes.php';
 
 
     class SectionTesList{
-        private $html;
+        public $html;
 
         public function __construct(){
-            $this->html = file_get_contents('./html/ListTes.html');
+            $bootstrapCSS = file_get_contents('./layout/css/bootstrap.min.css');
+            $mdiCSS = file_get_contents('./layout/css/materialdesignicons.min.css');
+            $tinySliderCSS = file_get_contents('./layout/css/tiny-slider.css');
+            $swiperCSS = file_get_contents('./layout/css/swiper.min.css');
+            $customCSS = file_get_contents('./layout/css/style.min.css');
+            $colorsCSS = file_get_contents('./layout/css/colors/default.css');
+    
+            // Carrega o conteúdo do arquivo HTML
+            $html = file_get_contents('./html/ListTes.html');
+            $styles = "<style>{$bootstrapCSS}{$mdiCSS}{$tinySliderCSS}{$swiperCSS}{$customCSS}{$colorsCSS}</style>";
+            $this->html = "{$styles}{$html}";
         }
 
         public function load(){
@@ -49,10 +59,22 @@ require_once './model/SectionTes.php';
                 print $e->getMessage();
             }
         }
+        public function PuxarDashboard() {
+            $cadastroListagemUsuario = new Dashboard();
+            $this->teste = $cadastroListagemUsuario->show();    
+        }
 
         public function show(){
             $this->load();
-            print $this->html;
+            $this->PuxarDashboard();
+
+            $conteudo = '<div style="display: flex; flex-direction: column; justify-content: center; 
+            padding-left: 130px;">';
+            $conteudo .= $this->html;   
+            $conteudo .= $this->teste;   
+            $conteudo .= '</div>';
+
+            print $conteudo;
         }
     }
 ?>
