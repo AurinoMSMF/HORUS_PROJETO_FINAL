@@ -1,6 +1,7 @@
 <?php
 require_once './model/Preference.php';
 require_once './model/Caracteristicas.php';
+require_once './model/SectionTes.php';
 
 
 class LandingLoad{
@@ -12,6 +13,7 @@ class LandingLoad{
                 try {
                     $preferences = Preference::all();
                     $Caracteristicas = Caracteristicas::all();
+                    $sections = SectionTes::all();
 
 
                     $html = $styles . file_get_contents('./layout/index.html');
@@ -50,6 +52,33 @@ class LandingLoad{
                                  }
                                   }   
                     
+                    //TESTEMUNHO UM
+
+                    $html = str_replace('{name_um}',$sections[0]['name'],$html);
+                    $html = str_replace('{function_um}',$sections[0]['function'],$html);
+                    $html = str_replace('{title_um}',$sections[0]['title'],$html);
+                    $html = str_replace('{description_um}',$sections[0]['description'],$html);
+                    $html = str_replace('{images/user/img-1.jpg}','./layout/images/user/img-1.jpg',$html);
+                    $html = str_replace('{images/img/img-1.png}','./layout/images/img/img-1.png',$html);
+                    
+                    //TESTEMUNHO DOIS
+
+                    $html = str_replace('{name_dois}',$sections[1]['name'],$html);
+                    $html = str_replace('{function_dois}',$sections[1]['function'],$html);
+                    $html = str_replace('{title_dois}',$sections[1]['title'],$html);
+                    $html = str_replace('{description_dois}',$sections[1]['description'],$html);
+                    $html = str_replace('{images/user/img-2.jpg}','./layout/images/user/img-2.jpg',$html);
+                    $html = str_replace('{images/img/img-2.png}','./layout/images/img/img-2.png',$html);
+
+                    //TESTEMUNHO TRÊS
+
+                    $html = str_replace('{name_tres}',$sections[2]['name'],$html);
+                    $html = str_replace('{function_tres}',$sections[2]['function'],$html);
+                    $html = str_replace('{title_tres}',$sections[2]['title'],$html);
+                    $html = str_replace('{description_tres}',$sections[2]['description'],$html);
+                    $html = str_replace('{images/user/img-3.jpg}','./layout/images/user/img-3.jpg',$html);
+                    $html = str_replace('{images/img/img-3.png}','./layout/images/img/img-3.png',$html);
+
                     $html = str_replace('{css/bootstrap.min.css}','./layout/css/bootstrap.min.css',$html);
                     $html = str_replace('{css/materialdesignicons.min.css}','./layout/css/materialdesignicons.min.css',$html);
                     $html = str_replace('{css/tiny-slider.css}','./layout/css/tiny-slider.css',$html);
