@@ -1,5 +1,7 @@
 <?php
 require_once './model/Preference.php';
+require_once './model/Caracteristicas.php';
+
 
 class LandingLoad{
 
@@ -9,6 +11,8 @@ class LandingLoad{
         public static function load(){
                 try {
                     $preferences = Preference::all();
+                    $Caracteristicas = Caracteristicas::all();
+
 
                     $html = $styles . file_get_contents('./layout/index.html');
 
@@ -36,6 +40,15 @@ class LandingLoad{
                         $html = str_replace('{footer_powered_field}', $preferences['footer_powered_field'], $html);
                         // Adicione mais substituições conforme necessário para outras colunas do banco de dados.
                     }
+                    $i = 1;
+                    foreach ($Caracteristicas as $caracteristica) {
+                         $html = str_replace("{title$i}", $caracteristica['title'], $html);
+                         $html = str_replace("{description$i}", $caracteristica['description'], $html);
+                         $i++;
+                         if ($i > 4) {
+                             break; // Só temos 4 tags {title} e {caracteristica}
+                                 }
+                                  }   
                     
                     $html = str_replace('{css/bootstrap.min.css}','./layout/css/bootstrap.min.css',$html);
                     $html = str_replace('{css/materialdesignicons.min.css}','./layout/css/materialdesignicons.min.css',$html);
