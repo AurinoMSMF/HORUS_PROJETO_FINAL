@@ -82,7 +82,7 @@ class Usuarios {
                 // Verifica se encontrou algum usuário com as credenciais fornecidas
                 if ($stmt->rowCount() > 0) {
                     // Usuário válido
-                    header("Location: index.php?class=Dashboard&method=show");
+                    header("Location: index.php?class=CadastroListagemUsuario&method=show");
                     exit();
                 } else {
                     return $erroMessage = "Usuário ou senha incorretos. Tente novamente.";

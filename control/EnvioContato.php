@@ -12,8 +12,20 @@ class EnvioContato {
 
     public function __construct() {
         // Carrega o conteúdo do arquivo HTML
+        $bootstrapCSS = file_get_contents('./layout/css/bootstrap.min.css');
+        $mdiCSS = file_get_contents('./layout/css/materialdesignicons.min.css');
+        $tinySliderCSS = file_get_contents('./layout/css/tiny-slider.css');
+        $swiperCSS = file_get_contents('./layout/css/swiper.min.css');
+        $customCSS = file_get_contents('./layout/css/style.min.css');
+        $colorsCSS = file_get_contents('./layout/css/colors/default.css');
+
+        // Carrega o conteúdo do arquivo HTML
         $List = file_get_contents('./html/ListContatos.html');
-        $this->List = "{$List}";
+                $this->data = ['cod_user' => null, 'login' => null, 'password' => null]; // Falta o ponto e vírgula aqui
+        // Concatena o conteúdo dos arquivos CSS e HTML
+        $styles = "<style>{$bootstrapCSS}{$mdiCSS}{$tinySliderCSS}{$swiperCSS}{$customCSS}{$colorsCSS}</style>";
+        $this->List = "{$styles}{$List}";
+
 
     }
     public static function GetUserTable() {
@@ -58,7 +70,7 @@ class EnvioContato {
         $this->PuxarDashboard();
     
         $conteudo = '<div style="display: flex; flex-direction: column; justify-content: center; 
-        padding-left: 100px;">';
+        padding-left: 130px;">';
         $conteudo .= $this->teste;   
         $conteudo .= $this->List;
         $conteudo .= '</div>';
