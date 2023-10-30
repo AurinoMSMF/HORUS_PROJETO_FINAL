@@ -13,7 +13,7 @@ class LandingLoad{
                     $html = $styles . file_get_contents('./layout/index.html');
 
                     foreach ($preferences as $preference) {
-
+                        //echo $preference['landing_title'];
                         $html = str_replace('{landing_title}', $preferences['landing_title'], $html);
                         $html = str_replace('{favicon}', './layout/uploaded/'.$preferences['favicon'], $html);
                         $html = str_replace('{header_logo}', './layout/uploaded/'.$preferences['header_logo'], $html);
@@ -34,7 +34,7 @@ class LandingLoad{
                         $html = str_replace('{footer_copyright_field}', $preferences['footer_copyright_field'], $html);
                         $html = str_replace('{footer_url_field}', $preferences['footer_url_field'], $html);
                         $html = str_replace('{footer_powered_field}', $preferences['footer_powered_field'], $html);
-
+                        // Adicione mais substituições conforme necessário para outras colunas do banco de dados.
                     }
                     
                     $html = str_replace('{css/bootstrap.min.css}','./layout/css/bootstrap.min.css',$html);

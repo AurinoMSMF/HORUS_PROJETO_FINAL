@@ -109,8 +109,6 @@ class CadastroListagemUsuario {
     $conteudo .= $this->Cadastro;
     $conteudo .= $this->List;
     $conteudo .= '</div>';
-
-
     print $conteudo;
 }
 }
