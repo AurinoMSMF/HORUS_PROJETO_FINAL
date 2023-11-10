@@ -21,7 +21,7 @@ require_once './model/Preference.php';
 
         }
 
-        public static function load(){
+        public static function load($alert){
                 try {
 
                     $preferences = Preference::all();
@@ -60,7 +60,8 @@ require_once './model/Preference.php';
 
                     $styles = "<style>{$bootstrapCSS}{$mdiCSS}{$tinySliderCSS}{$swiperCSS}{$customCSS}{$colorsCSS}</style>";
 
-                    print $styles . $html;
+                    print $styles . $html . $alert;
+                    $alert = '';
                 } catch (Exception $e) {
                     print $e->getMessage();
                 }
@@ -69,17 +70,19 @@ require_once './model/Preference.php';
 
             
             public function show(){
+                $alert = $_GET['alert'];
                 $this->PuxarDashboard();
 
-    
+                
                 $conteudo = '<div style="height:1272px;">';
                 $conteudo .= $this->teste;   
-                self::load();
+                self::load($alert);
                 $conteudo .= '</div>';
     
                 print $conteudo;
     
             }
+
         public function PuxarDashboard() {
             $cadastroListagemUsuario = new Dashboard();
             $this->teste = $cadastroListagemUsuario->show();

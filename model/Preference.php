@@ -50,7 +50,7 @@ class Preference{
                 $stmt->execute();
 
                     // Processar e atualizar imagens
-                    echo $_FILES[0];
+                    //echo $_FILES[0];
                     if (isset($_FILES)) {
                        
                         foreach ($_FILES as $images){
@@ -58,16 +58,36 @@ class Preference{
         
                             // Atualizar a imagem do favicon
                             if (!empty($_FILES['favicon']['type']) && $_FILES['favicon'] && $_FILES['favicon']['error']===0) {
-        
+                                
                                 $extensao = strtolower(substr($_FILES['favicon']['name'], -4));
                                 $novo_nome = hash('sha256', time()) . $extensao;
-                                move_uploaded_file($_FILES['favicon']['tmp_name'], $diretorio . $novo_nome);
-                                $sql_favicon = "UPDATE preferencias SET favicon = :favicon WHERE id = :id";
-                                $stmt = $conn->prepare($sql_favicon);
-                                $stmt->bindParam(':favicon', $novo_nome);
-                                $stmt->bindParam(':id', $id);
-                                $stmt->execute();
-        
+                                $file = new SplFileInfo($diretorio);
+                                if($file->isWritable()){
+                                    move_uploaded_file($_FILES['favicon']['tmp_name'], $diretorio . $novo_nome);
+                                    $sql_favicon = "UPDATE preferencias SET favicon = :favicon WHERE id = :id";
+                                    $stmt = $conn->prepare($sql_favicon);
+                                    $stmt->bindParam(':favicon', $novo_nome);
+                                    $stmt->bindParam(':id', $id);
+                                    $stmt->execute();
+                                    $alert = '<script>alert("Ação executada com sucesso.");</script>';
+                                } else {
+
+                                    $permissão = shell_exec("sudo chmod -R 757 $diretorio");
+
+                                    if($permissão !== null){
+                                        move_uploaded_file($_FILES['favicon']['tmp_name'], $diretorio . $novo_nome);
+                                        $sql_favicon = "UPDATE preferencias SET favicon = :favicon WHERE id = :id";
+                                        $stmt = $conn->prepare($sql_favicon);
+                                        $stmt->bindParam(':favicon', $novo_nome);
+                                        $stmt->bindParam(':id', $id);
+                                        $stmt->execute();
+                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                    }else{
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                    }
+
+                                }
+                                
                             }else{
                                 
                             }
@@ -77,12 +97,33 @@ class Preference{
         
                                 $extensao = strtolower(substr($_FILES['header_logo']['name'], -4));
                                 $novo_nome = md5(time()) . $extensao;
-                                move_uploaded_file($_FILES['header_logo']['tmp_name'], $diretorio . $novo_nome);
-                                $sql_header_logo = "UPDATE preferencias SET header_logo = :header_logo WHERE id = :id";
-                                $stmt = $conn->prepare($sql_header_logo);
-                                $stmt->bindParam(':header_logo', $novo_nome);
-                                $stmt->bindParam(':id', $id);
-                                $stmt->execute();
+                                $file = new SplFileInfo($diretorio);
+                                if($file->isWritable()){
+                                    move_uploaded_file($_FILES['header_logo']['tmp_name'], $diretorio . $novo_nome);
+                                    $sql_header_logo = "UPDATE preferencias SET header_logo = :header_logo WHERE id = :id";
+                                    $stmt = $conn->prepare($sql_header_logo);
+                                    $stmt->bindParam(':header_logo', $novo_nome);
+                                    $stmt->bindParam(':id', $id);
+                                    $stmt->execute();
+                                    $alert = '<script>alert("Ação executada com sucesso.");</script>';
+                                } else {
+
+                                    $permissão = shell_exec("sudo chmod -R 757 $diretorio");
+
+                                    if($permissão !== null){
+                                        move_uploaded_file($_FILES['favicon']['tmp_name'], $diretorio . $novo_nome);
+                                        $sql_favicon = "UPDATE preferencias SET header_logo = :header_logo WHERE id = :id";
+                                        $stmt = $conn->prepare($sql_header_logo);
+                                        $stmt->bindParam(':header_logo', $novo_nome);
+                                        $stmt->bindParam(':id', $id);
+                                        $stmt->execute();
+                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                    }else{
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                    }
+
+                                }
+                                
         
                             }else{
                                 
@@ -93,14 +134,33 @@ class Preference{
                                 $extensao = strtolower(substr($_FILES['section_home_img']['name'],-4));
                                 $novo_nome=md5(time()) . $extensao;
                                 $diretorio = "./layout/uploaded/";
+                                $file = new SplFileInfo($diretorio);
+                                if($file->isWritable()){
+                                    move_uploaded_file($_FILES['section_home_img']['tmp_name'], $diretorio.$novo_nome);
+                                    $sql_section_home_img = "UPDATE preferencias SET section_home_img = :section_home_img WHERE id = :id";
+                                    $stmt = $conn->prepare($sql_section_home_img);
+                                    $stmt->bindParam(':section_home_img', $novo_nome);
+                                    $stmt->bindParam(':id', $id);
+                                    $stmt->execute();
+                                    $alert = '<script>alert("Ação executada com sucesso.");</script>';
+                                } else {
+
+                                    $permissão = shell_exec("sudo chmod -R 757 $diretorio");
+
+                                    if($permissão !== null){
+                                        move_uploaded_file($_FILES['favicon']['tmp_name'], $diretorio . $novo_nome);
+                                        $sql_section_home_img = "UPDATE preferencias SET section_home_img = :section_home_img WHERE id = :id";
+                                        $stmt = $conn->prepare($sql_section_home_img);
+                                        $stmt->bindParam(':section_home_img', $novo_nome);
+                                        $stmt->bindParam(':id', $id);
+                                        $stmt->execute();
+                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                    }else{
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                    }
+
+                                }
                                 
-                                move_uploaded_file($_FILES['section_home_img']['tmp_name'], $diretorio.$novo_nome);
-                            
-                                $sql_section_home_img = "UPDATE preferencias SET section_home_img = :section_home_img WHERE id = :id";
-                                $stmt = $conn->prepare($sql_section_home_img);
-                                $stmt->bindParam(':section_home_img', $novo_nome);
-                                $stmt->bindParam(':id', $id);
-                                $stmt->execute();
         
                             }else{
                                 
@@ -111,14 +171,33 @@ class Preference{
                                 $extensao = strtolower(substr($_FILES['section_appstore_img']['name'],-4));
                                 $novo_nome=md5(time()) . $extensao;
                                 $diretorio = "./layout/uploaded/";
-                                
-                                move_uploaded_file($_FILES['section_appstore_img']['tmp_name'], $diretorio.$novo_nome);
-                            
-                                $sql_section_appstore_img = "UPDATE preferencias SET section_appstore_img = :section_appstore_img WHERE id = :id";
-                                $stmt = $conn->prepare($sql_section_appstore_img);
-                                $stmt->bindParam(':section_appstore_img', $novo_nome);
-                                $stmt->bindParam(':id', $id);
-                                $stmt->execute();
+                                $file = new SplFileInfo($diretorio);
+                                if($file->isWritable()){
+                                    move_uploaded_file($_FILES['section_appstore_img']['tmp_name'], $diretorio.$novo_nome);
+                                    $sql_section_appstore_img = "UPDATE preferencias SET section_appstore_img = :section_appstore_img WHERE id = :id";
+                                    $stmt = $conn->prepare($sql_section_appstore_img);
+                                    $stmt->bindParam(':section_appstore_img', $novo_nome);
+                                    $stmt->bindParam(':id', $id);
+                                    $stmt->execute();
+                                    $alert = '<script>alert("Ação executada com sucesso.");</script>';
+                                } else {
+
+                                    $permissão = shell_exec("sudo chmod -R 757 $diretorio");
+
+                                    if($permissão !== null){
+                                        move_uploaded_file($_FILES['favicon']['tmp_name'], $diretorio . $novo_nome);
+                                        $sql_section_appstore_img = "UPDATE preferencias SET section_appstore_img = :section_appstore_img WHERE id = :id";
+                                        $stmt = $conn->prepare($sql_section_appstore_img);
+                                        $stmt->bindParam(':section_appstore_img', $novo_nome);
+                                        $stmt->bindParam(':id', $id);
+                                        $stmt->execute();
+                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                    }else{
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                    }
+
+                                }                                    
+                             
         
                             }else{
                                 
@@ -129,14 +208,33 @@ class Preference{
                                 $extensao = strtolower(substr($_FILES['section_appstore_img_app']['name'],-4));
                                 $novo_nome=md5(time()) . $extensao;
                                 $diretorio = "./layout/uploaded/";
+                                $file = new SplFileInfo($diretorio);
+                                if($file->isWritable()){
+                                    move_uploaded_file($_FILES['section_appstore_img_app']['tmp_name'], $diretorio.$novo_nome);
+                                    $sql_section_appstore_img_app = "UPDATE preferencias SET section_appstore_img_app = :section_appstore_img_app WHERE id = :id";
+                                    $stmt = $conn->prepare($sql_section_appstore_img_app);
+                                    $stmt->bindParam(':section_appstore_img_app', $novo_nome);
+                                    $stmt->bindParam(':id', $id);
+                                    $stmt->execute();
+                                    $alert = '<script>alert("Ação executada com sucesso.");</script>';
+                                } else {
+
+                                    $permissão = shell_exec("sudo chmod -R 757 $diretorio");
+
+                                    if($permissão !== null){
+                                        move_uploaded_file($_FILES['favicon']['tmp_name'], $diretorio . $novo_nome);
+                                        $sql_section_appstore_img_app = "UPDATE preferencias SET section_appstore_img_app = :section_appstore_img_app WHERE id = :id";
+                                        $stmt = $conn->prepare($sql_section_appstore_img_app);
+                                        $stmt->bindParam(':section_appstore_img_app', $novo_nome);
+                                        $stmt->bindParam(':id', $id);
+                                        $stmt->execute();
+                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                    }else{
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                    }
+
+                                }                                    
                                 
-                                move_uploaded_file($_FILES['section_appstore_img_app']['tmp_name'], $diretorio.$novo_nome);
-                            
-                                $sql_section_appstore_img_app = "UPDATE preferencias SET section_appstore_img_app = :section_appstore_img_app WHERE id = :id";
-                                $stmt = $conn->prepare($sql_section_appstore_img_app);
-                                $stmt->bindParam(':section_appstore_img_app', $novo_nome);
-                                $stmt->bindParam(':id', $id);
-                                $stmt->execute();
         
                             }else{
                                 
@@ -147,14 +245,32 @@ class Preference{
                                 $extensao = strtolower(substr($_FILES['section_appstore_img_play']['name'],-4));
                                 $novo_nome=md5(time()) . $extensao;
                                 $diretorio = "./layout/uploaded/";
-                                
-                                move_uploaded_file($_FILES['section_appstore_img_play']['tmp_name'], $diretorio.$novo_nome);
-                            
-                                $sql_section_appstore_img_play = "UPDATE preferencias SET section_appstore_img_play = :section_appstore_img_play WHERE id = :id";
-                                $stmt = $conn->prepare($sql_section_appstore_img_play);
-                                $stmt->bindParam(':section_appstore_img_play', $novo_nome);
-                                $stmt->bindParam(':id', $id);
-                                $stmt->execute();
+                                $file = new SplFileInfo($diretorio);
+                                if($file->isWritable()){
+                                    move_uploaded_file($_FILES['section_appstore_img_play']['tmp_name'], $diretorio.$novo_nome);
+                                    $sql_section_appstore_img_play = "UPDATE preferencias SET section_appstore_img_play = :section_appstore_img_play WHERE id = :id";
+                                    $stmt = $conn->prepare($sql_section_appstore_img_play);
+                                    $stmt->bindParam(':section_appstore_img_play', $novo_nome);
+                                    $stmt->bindParam(':id', $id);
+                                    $stmt->execute();
+                                    $alert = '<script>alert("Ação executada com sucesso.");</script>';
+                                } else {
+                                    
+                                    $permissão = shell_exec("sudo chmod -R 757 $diretorio");
+
+                                    if($permissão !== null){
+                                        move_uploaded_file($_FILES['favicon']['tmp_name'], $diretorio . $novo_nome);
+                                        $sql_section_appstore_img_play = "UPDATE preferencias SET section_appstore_img_play = :section_appstore_img_play WHERE id = :id";
+                                        $stmt = $conn->prepare($sql_section_appstore_img_play);
+                                        $stmt->bindParam(':section_appstore_img_play', $novo_nome);
+                                        $stmt->bindParam(':id', $id);
+                                        $stmt->execute();
+                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                    }else{
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                    }
+
+                                }             
         
                             }else{
                                 
@@ -165,18 +281,37 @@ class Preference{
                                 $extensao = strtolower(substr($_FILES['footer_logo']['name'],-4));
                                 $novo_nome=md5(time()) . $extensao;
                                 $diretorio = "./layout/uploaded/";
+                                $file = new SplFileInfo($diretorio);
+                                if($file->isWritable()){
+                                    move_uploaded_file($_FILES['footer_logo']['tmp_name'], $diretorio.$novo_nome);
+                                    $sql_footer_logo = "UPDATE preferencias SET footer_logo = :footer_logo WHERE id = :id";
+                                    $stmt = $conn->prepare($sql_footer_logo);
+                                    $stmt->bindParam(':footer_logo', $novo_nome);
+                                    $stmt->bindParam(':id', $id);
+                                    $stmt->execute();
+                                    $alert = '<script>alert("Ação executada com sucesso.");</script>';
+                                } else {
+
+                                    $permissão = shell_exec("sudo chmod -R 757 $diretorio");
+
+                                    if($permissão !== null){
+                                        move_uploaded_file($_FILES['favicon']['tmp_name'], $diretorio . $novo_nome);
+                                        $sql_footer_logo = "UPDATE preferencias SET footer_logo = :footer_logo WHERE id = :id";
+                                        $stmt = $conn->prepare($sql_footer_logo);
+                                        $stmt->bindParam(':footer_logo', $novo_nome);
+                                        $stmt->bindParam(':id', $id);
+                                        $stmt->execute();
+                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                    }else{
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                    }
+
+                                }                                    
                                 
-                                move_uploaded_file($_FILES['footer_logo']['tmp_name'], $diretorio.$novo_nome);
-                            
-                                $sql_footer_logo = "UPDATE preferencias SET footer_logo = :footer_logo WHERE id = :id";
-                                $stmt = $conn->prepare($sql_footer_logo);
-                                $stmt->bindParam(':footer_logo', $novo_nome);
-                                $stmt->bindParam(':id', $id);
-                                $stmt->execute();
-        
                             }else{
                                 
                             }
+
                         }
 
                         $conn->commit(); // Confirma a transação
@@ -186,11 +321,11 @@ class Preference{
                 //var_dump($_FILES);
                 unset($_FILES);
                 // Redirecione para uma página de sucesso, se necessário
-                header("Location: ./index.php?class=PreferenceList&method=show");
+                header("Location: ./index.php?class=PreferenceList&method=show&alert=$alert");
                 exit();
             } catch (Exception $e) {
                 // Trate erros, se houver
-                echo "Erro: " . $e->getMessage();
+                echo "Erro: " . $e->getTrace();
             }            
 
         }    

@@ -40,7 +40,7 @@ class PreferenceForm{
             $this->data = $preference;
         }
         catch(Exception $e){
-            print $e->getMessage();
+            print $e->getTrace();
         }
 
     }
@@ -53,7 +53,7 @@ class PreferenceForm{
             $this->data['id'] = $id;
         }
         catch(Exception $e){
-            print $e->getMessage();
+            print $e->getTrace();
         }
 
     }
