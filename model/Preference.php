@@ -81,9 +81,9 @@ class Preference{
                                         $stmt->bindParam(':favicon', $novo_nome);
                                         $stmt->bindParam(':id', $id);
                                         $stmt->execute();
-                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                        $alert = '<script>alert("Permissão de escrita foi ativada e a ação foi executada com sucesso.");</script>';
                                     }else{
-                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de escrita.");</script>';
                                     }
 
                                 }
@@ -117,9 +117,9 @@ class Preference{
                                         $stmt->bindParam(':header_logo', $novo_nome);
                                         $stmt->bindParam(':id', $id);
                                         $stmt->execute();
-                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                        $alert = '<script>alert("Permissão de escrita foi ativada e a ação foi executada com sucesso.");</script>';
                                     }else{
-                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de escrita.");</script>';
                                     }
 
                                 }
@@ -154,9 +154,9 @@ class Preference{
                                         $stmt->bindParam(':section_home_img', $novo_nome);
                                         $stmt->bindParam(':id', $id);
                                         $stmt->execute();
-                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                        $alert = '<script>alert("Permissão de escrita foi ativada e a ação foi executada com sucesso.");</script>';
                                     }else{
-                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de escrita.");</script>';
                                     }
 
                                 }
@@ -191,9 +191,9 @@ class Preference{
                                         $stmt->bindParam(':section_appstore_img', $novo_nome);
                                         $stmt->bindParam(':id', $id);
                                         $stmt->execute();
-                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                        $alert = '<script>alert("Permissão de escrita foi ativada e a ação foi executada com sucesso.");</script>';
                                     }else{
-                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de escrita.");</script>';
                                     }
 
                                 }                                    
@@ -228,9 +228,9 @@ class Preference{
                                         $stmt->bindParam(':section_appstore_img_app', $novo_nome);
                                         $stmt->bindParam(':id', $id);
                                         $stmt->execute();
-                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                        $alert = '<script>alert("Permissão de escrita foi ativada e a ação foi executada com sucesso.");</script>';
                                     }else{
-                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de escrita.");</script>';
                                     }
 
                                 }                                    
@@ -265,9 +265,9 @@ class Preference{
                                         $stmt->bindParam(':section_appstore_img_play', $novo_nome);
                                         $stmt->bindParam(':id', $id);
                                         $stmt->execute();
-                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                        $alert = '<script>alert("Permissão de escrita foi ativada e a ação foi executada com sucesso.");</script>';
                                     }else{
-                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de escrita.");</script>';
                                     }
 
                                 }             
@@ -301,9 +301,9 @@ class Preference{
                                         $stmt->bindParam(':footer_logo', $novo_nome);
                                         $stmt->bindParam(':id', $id);
                                         $stmt->execute();
-                                        $alert = '<script>alert("Permissão de leitura foi ativada e a ação foi executada com sucesso.");</script>';
+                                        $alert = '<script>alert("Permissão de escrita foi ativada e a ação foi executada com sucesso.");</script>';
                                     }else{
-                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de leitura.");</script>';
+                                        $alert = '<script>alert("Não foi possivel salvar as alterações. Ajuste as permissões de escrita.");</script>';
                                     }
 
                                 }                                    
